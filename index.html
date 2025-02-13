@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Personal Profile</title>
+    <!-- Import open-source artistic font "Lora" -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Lora", serif;
+        margin: 0;
+        padding: 0;
+        transition: background 0.3s, color 0.3s;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .profile {
+        text-align: center;
+        padding: 20px;
+      }
+      .profile img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+      /* Style for dynamic rotating text */
+      #positionText {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+      }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: #66bb6a;
+      }
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+      /* Light mode styles */
+      body.light {
+        background-color: #ffffff;
+        color: #333;
+      }
+      /* Dark mode styles */
+      body.dark {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <div class="toggle-container">
+      <label class="toggle-switch">
+        <input type="checkbox" id="modeSwitch" checked />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="container">
+      <div class="profile">
+        <!--<img src="https://via.placeholder.com/150" alt="Profile Picture" />-->
+        <h1>Richard YongLe Liu</h1>
+        <!-- Rotating position description -->
+        <h3 id="positionText">Software Engineer</h3>
+        <p>
+          I'm currently a senior (12th-grade) student at No. 2 High School of
+          East China Normal University. hi.
+        </p>
+      </div>
+    </div>
+    <script>
+      // Dark/light mode switch
+      const modeSwitch = document.getElementById("modeSwitch");
+      modeSwitch.addEventListener("change", function () {
+        document.body.classList.toggle("dark", !this.checked);
+        document.body.classList.toggle("light", this.checked);
+      });
+
+      // Dynamic rotating text for the position description
+      const positions = [
+        "Software Engineer",
+        "Mechanical Engineer",
+        "Pro Golfer",
+        "UI/UX & 2D Art Designer",
+        "Crypto Trader",
+      ];
+      let currentIndex = 0;
+      const positionText = document.getElementById("positionText");
+
+      function rotatePosition() {
+        // Fade out
+        positionText.style.opacity = 0;
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % positions.length;
+          positionText.innerText = positions[currentIndex];
+          // Fade in
+          positionText.style.opacity = 1;
+        }, 500); // Duration matches CSS transition
+      }
+
+      // Rotate text every 2.5 seconds
+      setInterval(rotatePosition, 2500);
+    </script>
+  </body>
+</html>
