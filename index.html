@@ -108,16 +108,17 @@
         <h3 id="positionText">Software Engineer</h3>
         <p>
           I'm currently a senior (12th-grade) student at No. 2 High School of
-          East China Normal University. hi.
+          East China Normal University.
         </p>
+        <p>More contents will be added soon.</p>
       </div>
     </div>
     <script>
       // Dark/light mode switch
       const modeSwitch = document.getElementById("modeSwitch");
       modeSwitch.addEventListener("change", function () {
-        document.body.classList.toggle("dark", !this.checked);
-        document.body.classList.toggle("light", this.checked);
+        document.body.classList.toggle("dark", this.checked);
+        document.body.classList.toggle("light", !this.checked);
       });
 
       // Dynamic rotating text for the position description
@@ -125,7 +126,7 @@
         "Software Engineer",
         "Mechanical Engineer",
         "Pro Golfer",
-        "UI/UX & 2D Art Designer",
+        "UI/UX Designer",
         "Crypto Trader",
       ];
       let currentIndex = 0;
