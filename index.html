@@ -3,44 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Personal Profile</title>
-    <!-- Import open-source artistic font "Lora" -->
+    <title>Richard Y. Liu</title>
+    <!-- Import the open-source font "Lora" -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <style>
       body {
-        font-family: "Lora", serif;
+        font-family: "Lora", Georgia, "Times New Roman", Times, serif;
         margin: 0;
         padding: 0;
         transition: background 0.3s, color 0.3s;
       }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
+      /* Dark mode is the default */
+      body.dark {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      body.light {
+        background-color: #ffffff;
+        color: #333;
+      }
+      /* Top bar containing section navigation, LinkedIn button, and mode toggle */
+      .top-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
       }
-      .profile {
-        text-align: center;
-        padding: 20px;
+      .nav-container {
+        margin-right: auto;
+        margin-left: 20px;
       }
-      .profile img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 20px;
+      .section-btn {
+        background: none;
+        border: none;
+        color: inherit;
+        font-size: 16px;
+        margin-right: 15px;
+        cursor: pointer;
+        padding: 5px 10px;
+        transition: background 0.3s;
+        text-decoration: none;
       }
-      /* Style for dynamic rotating text */
-      #positionText {
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
+      .section-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+      .linkedin-btn img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 5px;
       }
       .toggle-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
+        margin-right: 20px;
       }
       .toggle-switch {
         position: relative;
@@ -81,38 +104,81 @@
       input:checked + .slider:before {
         transform: translateX(26px);
       }
-      /* Light mode styles */
-      body.light {
-        background-color: #ffffff;
-        color: #333;
+      .container {
+        max-width: 800px;
+        margin: 100px auto 20px auto; /* leave space for the fixed top bar */
+        padding: 20px;
       }
-      /* Dark mode styles */
-      body.dark {
-        background-color: #121212;
-        color: #e0e0e0;
+      .profile {
+        text-align: center;
+        padding: 20px;
+      }
+      .profile img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+      /* Dynamic rotating text for the position */
+      #positionText {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
+      /* Section content styles */
+      .section-content {
+        margin-top: 30px;
+        text-align: left;
       }
     </style>
   </head>
   <body class="dark">
-    <div class="toggle-container">
-      <label class="toggle-switch">
-        <input type="checkbox" id="modeSwitch" checked />
-        <span class="slider"></span>
-      </label>
+    <!-- Top bar: Navigation, LinkedIn Button, and Dark/Light Toggle -->
+    <div class="top-bar">
+      <div class="nav-container">
+        <button class="section-btn" data-section="Home">Home</button>
+        <button class="section-btn" data-section="work">Work</button>
+        <button class="section-btn" data-section="project">Project</button>
+        <a
+          class="section-btn linkedin-btn"
+          href="https://www.linkedin.com/in/richard-yliu"
+          target="_blank"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+            alt="LinkedIn Favicon"
+          />LinkedIn
+        </a>
+      </div>
+      <div class="toggle-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="modeSwitch" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
+
     <div class="container">
       <div class="profile">
         <!--<img src="https://via.placeholder.com/150" alt="Profile Picture" />-->
         <h1>Richard YongLe Liu</h1>
-        <!-- Rotating position description -->
         <h3 id="positionText">Software Engineer</h3>
-        <p>
-          I'm currently a senior (12th-grade) student at No. 2 High School of
-          East China Normal University.
-        </p>
-        <p>More contents will be added soon.</p>
+        <!-- Section Contents -->
+        <div class="section-content" id="Home">
+          <p>
+            I'm currently a senior (12th-grade) student at No. 2 High School of
+            East China Normal University.
+          </p>
+        </div>
+        <div class="section-content" id="work" style="display: none">
+          <p>Work content goes here.</p>
+        </div>
+        <div class="section-content" id="project" style="display: none">
+          <p>Project content goes here.</p>
+        </div>
       </div>
     </div>
+
     <script>
       // Dark/light mode switch
       const modeSwitch = document.getElementById("modeSwitch");
@@ -140,11 +206,24 @@
           positionText.innerText = positions[currentIndex];
           // Fade in
           positionText.style.opacity = 1;
-        }, 500); // Duration matches CSS transition
+        }, 500);
       }
-
-      // Rotate text every 2.5 seconds
       setInterval(rotatePosition, 2500);
+
+      // Section navigation: show selected section and hide others
+      const sectionButtons = document.querySelectorAll(".section-btn");
+      const sections = document.querySelectorAll(".section-content");
+
+      sectionButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.getAttribute("data-section");
+          if (target) {
+            sections.forEach((sec) => {
+              sec.style.display = sec.id === target ? "block" : "none";
+            });
+          }
+        });
+      });
     </script>
   </body>
 </html>
