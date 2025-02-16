@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");*/
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -21,7 +21,7 @@ body.light {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px;
+  padding: 18px;
   position: fixed;
   top: 0;
   left: 1;
@@ -30,13 +30,13 @@ body.light {
 }
 .nav-container {
   margin-right: auto;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .section-btn {
   background: none;
   border: none;
   color: inherit;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 15px;
   cursor: pointer;
   padding: 5px 10px;
@@ -57,8 +57,8 @@ body.light {
   color: inherit;
 }
 .linkedin-btn svg {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   vertical-align: middle;
 }
 .toggle-container {
@@ -104,7 +104,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 60px auto 20px auto; /* leave space for fixed top bar */
   padding: 20px;
 }
@@ -123,11 +123,14 @@ input:checked + .slider:before {
 #positionText {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+  font-size: 22px;
 }
 /* Section content styles */
 .section-content {
   margin-top: 30px;
+  font-size: 18px;
   text-align: left;
+  line-height: 1.5;
 }
 footer {
   background-color: #333;

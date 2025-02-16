@@ -7,10 +7,10 @@ modeSwitch.addEventListener("change", function () {
 
 // Dynamic rotating text for the position description
 const positions = [
-  "Software Engineer",
-  "Mechanical Engineer",
-  "Pro Golfer",
-  "UI/UX Designer",
+  "Web Engineer",
+  "Computer Science Researcher",
+  "Pro Athlete",
+  "Researcher",
   "Trader",
 ];
 let currentIndex = 0;
