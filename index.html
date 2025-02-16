@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Richard Y. Liu</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
   </head>
   <body class="dark">
     <!-- Top Bar: Navigation, LinkedIn, and Dark/Light Toggle -->
     <div class="top-bar">
       <div class="nav-container">
-        <button class="section-btn" data-section="about">About</button>
+        <button class="section-btn" data-section="home">Home</button>
         <button class="section-btn" data-section="work">Work</button>
         <button class="section-btn" data-section="project">Project</button>
         <!-- LinkedIn Button with inline SVG favicon -->
@@ -29,7 +30,7 @@
         <h1>Richard YongLe Liu</h1>
         <h3 id="positionText">Software Engineer</h3>
         <!-- Section Contents -->
-        <div class="section-content" id="about">
+        <div class="section-content" id="home">
           <p>
             I'm currently a senior (12th-grade) student at No. 2 High School of
             East China Normal University.
@@ -43,53 +44,6 @@
         </div>
       </div>
     </div>
-
-    <script>
-      // Dark/light mode switch
-      const modeSwitch = document.getElementById("modeSwitch");
-      modeSwitch.addEventListener("change", function () {
-        document.body.classList.toggle("dark", this.checked);
-        document.body.classList.toggle("light", !this.checked);
-      });
-
-      // Dynamic rotating text for the position description
-      const positions = [
-        "Software Engineer",
-        "Mechanical Engineer",
-        "Pro Golfer",
-        "UI/UX Designer",
-        "Trader",
-      ];
-      let currentIndex = 0;
-      const positionText = document.getElementById("positionText");
-
-      function rotatePosition() {
-        // Fade out
-        positionText.style.opacity = 0;
-        setTimeout(() => {
-          currentIndex = (currentIndex + 1) % positions.length;
-          positionText.innerText = positions[currentIndex];
-          // Fade in
-          positionText.style.opacity = 1;
-        }, 500); // Duration matches CSS transition
-      }
-
-      // Rotate text every 2.5 seconds
-      setInterval(rotatePosition, 2500);
-
-      // Section navigation: show selected section and hide others
-      const sectionButtons = document.querySelectorAll(".section-btn");
-      const sections = document.querySelectorAll(".section-content");
-
-      sectionButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const target = button.getAttribute("data-section");
-          sections.forEach((sec) => {
-            sec.style.display = sec.id === target ? "block" : "none";
-          });
-        });
-      });
-    </script>
     <footer>
       <a
         class="linkedin-btn"
