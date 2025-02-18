@@ -7,40 +7,6 @@ body {
   padding: 0;
   transition: background 0.3s, color 0.3s;
 }
-/* Recognition list styling - Bold Version with Explanations */
-.work-list {
-  list-style: none; /* Remove default bullets */
-  padding: 0;
-  margin: 0px 0;
-}
-
-.work-list li {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 12px 20px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border-left: 6px solid #778aab; /* Thicker, bolder border */
-  font-size: 1.1em;
-  transition: background 0.3s, transform 0.3s;
-}
-
-/* Title of each recognition in bold */
-.work-list li .work-title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-/* Explanation text with normal weight */
-.work-list li .work-desc {
-  font-weight: normal;
-  font-size: 0.95em;
-}
-
-.work-list li:hover {
-  background: #2f3d4c;
-  transform: scale(1.02);
-}
-
 /* Dark mode is the default */
 body.dark {
   background-color: #121212;
@@ -170,6 +136,38 @@ input:checked + .slider:before {
   font-size: 18px;
   text-align: left;
   line-height: 1.5;
+}
+/* Recognition list styling - Bold Version with Explanations */
+.work-list {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0px 0;
+}
+
+.work-list li {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 20px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border-left: 6px solid #778aab; /* Thicker, bolder border */
+  font-size: 1.1em;
+  transition: background 0.3s, transform 0.3s;
+}
+/* Title of each recognition in bold */
+.work-list li .work-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Explanation text with normal weight */
+.work-list li .work-desc {
+  font-weight: normal;
+  font-size: 0.95em;
+}
+
+.work-list li:hover {
+  /*background: #2f3d4c;*/
+  transform: scale(1.02);
 }
 footer {
   background-color: #333;

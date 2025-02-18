@@ -6,7 +6,7 @@ modeSwitch.addEventListener("change", function () {
 });
 
 // Dynamic rotating text for the position description
-const positions = ["Engineer", "Pro Athlete", "Researcher", "Trader"];
+const positions = ["Engineer", "Athlete", "Researcher", "Trader"];
 let currentIndex = 0;
 const positionText = document.getElementById("positionText");
 
